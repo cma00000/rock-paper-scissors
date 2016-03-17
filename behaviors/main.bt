@@ -1,0 +1,467 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "children": [
+            4,
+            9,
+            11,
+            13,
+            44,
+            55,
+            25
+        ],
+        "decorators": [],
+        "options": {}
+    },
+    "4": {
+        "id": 4,
+        "class": "PlayAnimation",
+        "name": "Play a greeting",
+        "asset-pack": "core",
+        "parent": 1,
+        "options": {
+            "animPath": "greeting.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        }
+    },
+    "9": {
+        "id": 9,
+        "class": "PlayAnimation",
+        "name": "sleep",
+        "asset-pack": "core",
+        "parent": 1,
+        "options": {
+            "animPath": "sleep.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        }
+    },
+    "11": {
+        "id": 11,
+        "class": "Listen",
+        "name": "wait for greetings",
+        "asset-pack": "core",
+        "parent": 1,
+        "decorators": [
+            20
+        ],
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    let options = {",
+                "        heyJibo: false,",
+                "        detectEnd: false,",
+                "        incremental: false,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "greeting.rule",
+            "onResult": [
+                "(listener) => {",
+                "    listener.on('cloud', (asrResult, speakerIds) => {",
+                "",
+                "    });",
+                "}"
+            ]
+        }
+    },
+    "13": {
+        "id": 13,
+        "class": "PlayAnimation",
+        "name": "wake up",
+        "asset-pack": "core",
+        "parent": 1,
+        "options": {
+            "animPath": "greeting.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        }
+    },
+    "20": {
+        "id": 20,
+        "class": "SucceedOnListen",
+        "name": "",
+        "asset-pack": "core",
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    let options = {",
+                "        heyJibo: false,",
+                "        detectEnd: false,",
+                "        incremental: false,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "greeting.rule",
+            "onResult": [
+                "(listener) => {",
+                "    listener.on('cloud', (asrResult, speakerIds) => {",
+                "      console.log(asrResult);",
+                "      notepad.results = asrResult.NLParse",
+                "    });",
+                "}"
+            ]
+        }
+    },
+    "25": {
+        "id": 25,
+        "class": "Switch",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 1,
+        "children": [
+            34,
+            35
+        ],
+        "decorators": [
+            47
+        ],
+        "options": {}
+    },
+    "34": {
+        "id": 34,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 25,
+        "children": [
+            40,
+            39
+        ],
+        "decorators": [
+            37
+        ],
+        "options": {}
+    },
+    "35": {
+        "id": 35,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 25,
+        "decorators": [
+            41
+        ],
+        "children": [
+            42,
+            43
+        ],
+        "options": {}
+    },
+    "37": {
+        "id": 37,
+        "class": "Case",
+        "name": "",
+        "asset-pack": "core",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  return notepad.result.emotion==\"love\";",
+                "}"
+            ]
+        }
+    },
+    "39": {
+        "id": 39,
+        "class": "TextToSpeech",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 34,
+        "options": {
+            "words": "I love you too.",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        }
+    },
+    "40": {
+        "id": 40,
+        "class": "PlayAnimation",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 34,
+        "options": {
+            "animPath": "love.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        }
+    },
+    "41": {
+        "id": 41,
+        "class": "Case",
+        "name": "",
+        "asset-pack": "core",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  return notepad.result.emotion==\"hate\";",
+                "}"
+            ]
+        }
+    },
+    "42": {
+        "id": 42,
+        "class": "PlayAnimation",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 35,
+        "options": {
+            "animPath": "hate.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        }
+    },
+    "43": {
+        "id": 43,
+        "class": "TextToSpeech",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 35,
+        "options": {
+            "words": "Sorry to hear that.",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        }
+    },
+    "44": {
+        "id": 44,
+        "class": "TextToSpeechJs",
+        "name": "say hello",
+        "asset-pack": "core",
+        "parent": 1,
+        "options": {
+            "getWords": [
+                "(callback) => {",
+                "    if(notepad.results.whatNext == \"happy\") {",
+                "        let results = notepad.results;",
+                "        let text = 'Hello';",
+                "        callback(text);",
+                "    }",
+                "    else {",
+                "        callback('Sorry didn\\'t understand that.');",
+                "    }",
+                "}"
+            ],
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        }
+    },
+    "47": {
+        "id": 47,
+        "class": "StartOnEvent",
+        "name": "",
+        "asset-pack": "core",
+        "options": {
+            "eventName": "listen",
+            "onEvent": [
+                "() => {",
+                "}"
+            ]
+        }
+    },
+    "48": {
+        "id": 48,
+        "class": "Subtree",
+        "name": "idle",
+        "asset-pack": "core",
+        "parent": 52,
+        "decorators": [
+            49
+        ],
+        "options": {
+            "behaviorPath": "idle.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        }
+    },
+    "49": {
+        "id": 49,
+        "class": "SucceedOnEvent",
+        "name": "",
+        "asset-pack": "core",
+        "options": {
+            "eventName": "listen",
+            "onEvent": [
+                "() => {",
+                "}"
+            ]
+        }
+    },
+    "51": {
+        "id": 51,
+        "class": "Parallel",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 55,
+        "children": [
+            52,
+            54
+        ],
+        "options": {
+            "succeedOnOne": false
+        }
+    },
+    "52": {
+        "id": 52,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 51,
+        "children": [
+            48,
+            53
+        ],
+        "options": {}
+    },
+    "53": {
+        "id": 53,
+        "class": "ExecuteScript",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 52,
+        "options": {
+            "exec": [
+                "(succeed, fail) => {",
+                "    let dofs = jibo.animate.dofs;",
+                "    jibo.animate.centerRobot(dofs.ALL, true, () => {",
+                "        jibo.animate.setLEDColor([0, 0, 1]);",
+                "        succeed();    ",
+                "    });",
+                "}"
+            ]
+        }
+    },
+    "54": {
+        "id": 54,
+        "class": "Listen",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 51,
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    let options = {",
+                "        heyJibo: false,",
+                "        detectEnd: true,",
+                "        incremental: false,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "loveorhate.rule",
+            "onResult": [
+                "(listener) => {",
+                "    listener.on('cloud', (asrResult, speakerIds) => {",
+                "",
+                "    });",
+                "}"
+            ]
+        }
+    },
+    "55": {
+        "id": 55,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 1,
+        "decorators": [
+            56
+        ],
+        "children": [
+            51,
+            57
+        ],
+        "options": {}
+    },
+    "56": {
+        "id": 56,
+        "class": "WhileCondition",
+        "name": "",
+        "asset-pack": "core",
+        "options": {
+            "init": [
+                "() => {",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "    return true;",
+                "}"
+            ]
+        }
+    },
+    "57": {
+        "id": 57,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 55,
+        "children": [
+            106
+        ],
+        "options": {}
+    },
+    "106": {
+        "id": 106,
+        "class": "TextToSpeechJs",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 57,
+        "options": {
+            "getWords": [
+                "(callback) => {",
+                "    if(notepad.results) {",
+                "        let results = notepad.results;",
+                "        let text = '';",
+                "        if(results.whatNext !== \"null\") {",
+                "            text += results.whatNext;",
+                "        }",
+                "        callback(text);",
+                "    }",
+                "    else {",
+                "        callback('Sorry didn\\'t understand that.');",
+                "    }",
+                "    ",
+                "}"
+            ],
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        }
+    },
+    "meta": {
+        "version": 1
+    }
+}

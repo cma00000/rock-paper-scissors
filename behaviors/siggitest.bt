@@ -1,0 +1,318 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Sequence",
+        "name": "",
+        "options": {},
+        "decorators": [
+            "076759d3-e931-4424-b895-346bcbea92b7"
+        ],
+        "children": [
+            "2d084ea2-56ef-478b-b2d0-93605ae7b4b8",
+            "fb2df0b2-28da-4e68-b581-5ceabd9e28c5",
+            "1afe11b4-f1ff-43f3-8254-18d090febc05",
+            "11db67a9-86bc-42c1-b59c-87a21bf4bdd8"
+        ]
+    },
+    "meta": {
+        "version": 1
+    },
+    "076759d3-e931-4424-b895-346bcbea92b7": {
+        "id": "076759d3-e931-4424-b895-346bcbea92b7",
+        "class": "WhileCondition",
+        "name": "",
+        "options": {
+            "init": [
+                "() => {",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "    return true;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "2d084ea2-56ef-478b-b2d0-93605ae7b4b8": {
+        "id": "2d084ea2-56ef-478b-b2d0-93605ae7b4b8",
+        "class": "Listen",
+        "name": "",
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    jibo.asr.setLog(true);",
+                "  ",
+                "    let options = {",
+                "        heyJibo: true,",
+                "        detectEnd: true,",
+                "        incremental: true,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "helloworld.rule",
+            "onResult": [
+                "(listener) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "11db67a9-86bc-42c1-b59c-87a21bf4bdd8": {
+        "id": "11db67a9-86bc-42c1-b59c-87a21bf4bdd8",
+        "class": "Switch",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 1,
+        "children": [
+            "c429376d-643e-4dee-a03a-0264cfec723b",
+            "6bc3e74e-1191-477b-9747-013191ff6530",
+            "50bb07c7-1847-43f5-9c96-04c4ce106e68"
+        ],
+        "options": {}
+    },
+    "4ab16784-db5b-4e5c-8ac0-098f07c08988": {
+        "id": "4ab16784-db5b-4e5c-8ac0-098f07c08988",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  return notepad.animation === 'scissors';",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "50bb07c7-1847-43f5-9c96-04c4ce106e68": {
+        "id": "50bb07c7-1847-43f5-9c96-04c4ce106e68",
+        "class": "Parallel",
+        "name": "plays scissors",
+        "options": {
+            "succeedOnOne": false
+        },
+        "asset-pack": "core",
+        "parent": "11db67a9-86bc-42c1-b59c-87a21bf4bdd8",
+        "decorators": [
+            "4ab16784-db5b-4e5c-8ac0-098f07c08988"
+        ],
+        "children": [
+            "5cdf7e57-bd8e-4e24-a491-b2bacc303f68",
+            "bc1f52de-cc39-45d6-9a36-1e58fd2d0506",
+            "8d6be6a9-55e4-46de-b0f5-cce8a200563d"
+        ]
+    },
+    "8d6be6a9-55e4-46de-b0f5-cce8a200563d": {
+        "id": "8d6be6a9-55e4-46de-b0f5-cce8a200563d",
+        "class": "Sequence",
+        "name": "who win",
+        "options": {},
+        "asset-pack": "core",
+        "parent": "50bb07c7-1847-43f5-9c96-04c4ce106e68",
+        "children": []
+    },
+    "bc1f52de-cc39-45d6-9a36-1e58fd2d0506": {
+        "id": "bc1f52de-cc39-45d6-9a36-1e58fd2d0506",
+        "class": "TextToSpeech",
+        "name": "",
+        "options": {
+            "words": "Scissors.",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "50bb07c7-1847-43f5-9c96-04c4ce106e68"
+    },
+    "5cdf7e57-bd8e-4e24-a491-b2bacc303f68": {
+        "id": "5cdf7e57-bd8e-4e24-a491-b2bacc303f68",
+        "class": "PlayAnimation",
+        "name": "",
+        "options": {
+            "animPath": "scissors.keys",
+            "config": [
+                "(animation) => {",
+                "      console.log('playing scissors.keys');",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "50bb07c7-1847-43f5-9c96-04c4ce106e68"
+    },
+    "c4d177e1-b3ba-471d-a752-86583ecca420": {
+        "id": "c4d177e1-b3ba-471d-a752-86583ecca420",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  return notepad.animation === 'paper';",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "6bc3e74e-1191-477b-9747-013191ff6530": {
+        "id": "6bc3e74e-1191-477b-9747-013191ff6530",
+        "class": "Parallel",
+        "name": "plays paper",
+        "options": {
+            "succeedOnOne": false
+        },
+        "asset-pack": "core",
+        "parent": "11db67a9-86bc-42c1-b59c-87a21bf4bdd8",
+        "decorators": [
+            "c4d177e1-b3ba-471d-a752-86583ecca420"
+        ],
+        "children": [
+            "7149798e-a64e-40a3-adde-d6240091a26b",
+            "f25beed0-1b54-40b3-a8d1-1fe19f114817"
+        ]
+    },
+    "f25beed0-1b54-40b3-a8d1-1fe19f114817": {
+        "id": "f25beed0-1b54-40b3-a8d1-1fe19f114817",
+        "class": "TextToSpeech",
+        "name": "",
+        "options": {
+            "words": "Paper.",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "6bc3e74e-1191-477b-9747-013191ff6530"
+    },
+    "7149798e-a64e-40a3-adde-d6240091a26b": {
+        "id": "7149798e-a64e-40a3-adde-d6240091a26b",
+        "class": "PlayAnimation",
+        "name": "",
+        "options": {
+            "animPath": "paper.keys",
+            "config": [
+                "(animation) => {",
+                "  console.log('playing paper.keys');",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "6bc3e74e-1191-477b-9747-013191ff6530"
+    },
+    "a77b3db4-4305-4cab-b67b-381fbd4db62e": {
+        "id": "a77b3db4-4305-4cab-b67b-381fbd4db62e",
+        "class": "Case",
+        "name": "",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  return notepad.animation === 'rock';",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "c429376d-643e-4dee-a03a-0264cfec723b": {
+        "id": "c429376d-643e-4dee-a03a-0264cfec723b",
+        "class": "Parallel",
+        "name": "gives rock",
+        "options": {
+            "succeedOnOne": true
+        },
+        "asset-pack": "core",
+        "parent": "11db67a9-86bc-42c1-b59c-87a21bf4bdd8",
+        "decorators": [
+            "a77b3db4-4305-4cab-b67b-381fbd4db62e"
+        ],
+        "children": [
+            "72162ff8-6742-494a-b4f5-316dcbabb194",
+            "1a741161-d539-45fd-8f00-8bcf84f9a9c7"
+        ]
+    },
+    "1a741161-d539-45fd-8f00-8bcf84f9a9c7": {
+        "id": "1a741161-d539-45fd-8f00-8bcf84f9a9c7",
+        "class": "TextToSpeech",
+        "name": "",
+        "options": {
+            "words": "Rock.",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "c429376d-643e-4dee-a03a-0264cfec723b"
+    },
+    "72162ff8-6742-494a-b4f5-316dcbabb194": {
+        "id": "72162ff8-6742-494a-b4f5-316dcbabb194",
+        "class": "PlayAnimation",
+        "name": "",
+        "options": {
+            "animPath": "rock.keys",
+            "config": [
+                "(animation) => {",
+                "    console.log('playing rock.keys');  ",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": "c429376d-643e-4dee-a03a-0264cfec723b"
+    },
+    "fb2df0b2-28da-4e68-b581-5ceabd9e28c5": {
+        "id": "fb2df0b2-28da-4e68-b581-5ceabd9e28c5",
+        "class": "TextToSpeechJs",
+        "name": "",
+        "options": {
+            "getWords": [
+                "(callback) => {",
+                "    if(notepad.results) {",
+                "        let results = notepad.results;",
+                "        let text = '';",
+                "        if(results.rps===notepad.animation) {",
+                "          text = 'Dual.';",
+                "        }",
+                "        else if (",
+                "        (results.rps=='paper' && notepad.animation == 'rock') ||",
+                "        (results.rps=='rock' && notepad.animation=='scissors') ||",
+                "        (results.rps=='scissors' && notepad.animation=='paper')) {",
+                "          text = 'You win.';",
+                "        }",
+                "        else {",
+                "          text = 'I win.';",
+                "        }",
+                "        callback(text);",
+                "    }",
+                "}"
+            ],
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "1afe11b4-f1ff-43f3-8254-18d090febc05": {
+        "id": "1afe11b4-f1ff-43f3-8254-18d090febc05",
+        "class": "TextToSpeechJs",
+        "name": "",
+        "options": {
+            "getWords": [
+                "(callback) => {",
+                "    let results = notepad.results;",
+                "    text = results + notepad.animation;",
+                "    callback(text);",
+                "}"
+            ],
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    }
+}

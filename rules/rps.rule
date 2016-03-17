@@ -1,0 +1,8 @@
+TopRule =
+$* (
+        rock {rps = 'rock'} |
+        paper {rps = 'paper'} |
+        scissors {rps = 'scissors'}
+
+    )
+$*;

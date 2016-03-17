@@ -1,0 +1,353 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "children": [
+            25,
+            50
+        ],
+        "decorators": [
+            7
+        ],
+        "options": {}
+    },
+    "7": {
+        "id": 7,
+        "class": "WhileCondition",
+        "name": "",
+        "asset-pack": "core",
+        "options": {
+            "init": [
+                "() => {",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "    return true;",
+                "}"
+            ]
+        }
+    },
+    "25": {
+        "id": 25,
+        "class": "Subtree",
+        "name": "Watch target until \"Hey Jibo\"",
+        "asset-pack": "core",
+        "parent": 1,
+        "decorators": [
+            26
+        ],
+        "options": {
+            "behaviorPath": "19-lps.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        }
+    },
+    "26": {
+        "id": 26,
+        "class": "SucceedOnEmbedded",
+        "name": "",
+        "asset-pack": "core",
+        "parent": null,
+        "options": {
+            "rule": "hey_jibo",
+            "onResult": [
+                "(listener) => {",
+                "\tlistener.on('hey-jibo', (asrResult, speakerIds) => {",
+                "",
+                "\t});",
+                "}"
+            ]
+        }
+    },
+    "48": {
+        "id": 48,
+        "class": "PlayAnimation",
+        "name": "Play excited animation",
+        "asset-pack": "core",
+        "parent": 181,
+        "options": {
+            "animPath": "excited.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        }
+    },
+    "50": {
+        "id": 50,
+        "class": "Parallel",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 1,
+        "children": [
+            634,
+            317,
+            181,
+            52
+        ],
+        "options": {
+            "succeedOnOne": false
+        }
+    },
+    "51": {
+        "id": 51,
+        "class": "PlayAudio",
+        "name": "FX_SeeYou_01.mp3",
+        "asset-pack": "core",
+        "parent": 52,
+        "options": {
+            "audioPath": "FX_SeeYou_01.mp3"
+        }
+    },
+    "52": {
+        "id": 52,
+        "class": "Random",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 50,
+        "children": [
+            51,
+            53,
+            55
+        ],
+        "options": {}
+    },
+    "53": {
+        "id": 53,
+        "class": "PlayAudio",
+        "name": "FX_SeeYou_02.mp3",
+        "asset-pack": "core",
+        "parent": 52,
+        "options": {
+            "audioPath": "FX_SeeYou_02.mp3"
+        }
+    },
+    "55": {
+        "id": 55,
+        "class": "PlayAudio",
+        "name": "FX_SeeYou_03.mp3",
+        "asset-pack": "core",
+        "parent": 52,
+        "options": {
+            "audioPath": "FX_SeeYou_03.mp3"
+        }
+    },
+    "181": {
+        "id": 181,
+        "class": "Random",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 50,
+        "children": [
+            48,
+            182,
+            316
+        ],
+        "options": {}
+    },
+    "182": {
+        "id": 182,
+        "class": "PlayAnimation",
+        "name": "Play dance",
+        "asset-pack": "core",
+        "parent": 181,
+        "options": {
+            "animPath": "dance.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        }
+    },
+    "316": {
+        "id": 316,
+        "class": "PlayAnimation",
+        "name": "Play greetings",
+        "asset-pack": "core",
+        "parent": 181,
+        "options": {
+            "animPath": "greeting.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        }
+    },
+    "317": {
+        "id": 317,
+        "class": "TextToSpeechJs",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 50,
+        "options": {
+            "getWords": [
+                "(callback) => {",
+                "    let responses = [",
+                "      \"Hey there. I see you.\",",
+                "      \"Whats up?\",",
+                "      \"Hi there.\" ",
+                "    ];",
+                "    let index = Math.round(Math.random() * (responses.length - 1));",
+                "    callback(responses[index]);",
+                "}"
+            ],
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        }
+    },
+    "634": {
+        "id": 634,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 50,
+        "children": [
+            638,
+            637,
+            644
+        ],
+        "options": {}
+    },
+    "637": {
+        "id": 637,
+        "class": "TextToSpeechJs",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 634,
+        "options": {
+            "getWords": [
+                "(callback) => {",
+                "    if(notepad.results) {",
+                "    callback('Say Cheese');",
+                "  }",
+                "}"
+            ],
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        }
+    },
+    "638": {
+        "id": 638,
+        "class": "Listen",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 634,
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    let options = {",
+                "        heyJibo: false,",
+                "        detectEnd: false,",
+                "        incremental: false,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "cheese.rule",
+            "onResult": [
+                "(listener) => {",
+                "    listener.on('hey-jibo', (asrResult, speakerIds) => {",
+                "        emitter.emit('listen')",
+                "    });",
+                "    listener.on('cloud', (asrResult, speakerIds) => {",
+                "        console.log(asrResult);",
+                "        notepad.results = asrResult.NLParse",
+                "    });",
+                "}"
+            ]
+        }
+    },
+    "641": {
+        "id": 641,
+        "class": "TakePhoto",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 644,
+        "options": {
+            "resolution": 2,
+            "onPhoto": [
+                "(error, imageUrl) => {",
+                "}"
+            ]
+        }
+    },
+    "644": {
+        "id": 644,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 634,
+        "children": [
+            647,
+            645,
+            641
+        ],
+        "decorators": [
+            646
+        ],
+        "options": {}
+    },
+    "645": {
+        "id": 645,
+        "class": "PlayAnimation",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 644,
+        "options": {
+            "animPath": "null",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        }
+    },
+    "646": {
+        "id": 646,
+        "class": "StartOnCondition",
+        "name": "",
+        "asset-pack": "core",
+        "options": {
+            "init": [
+                "() => {",
+                "  return notepad.results;",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "}"
+            ]
+        }
+    },
+    "647": {
+        "id": 647,
+        "class": "TextToSpeech",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 644,
+        "options": {
+            "words": "Alright!",
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        }
+    },
+    "meta": {
+        "version": 1
+    }
+}

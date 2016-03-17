@@ -1,0 +1,12 @@
+TopRule = $* ?please{polite = 'true'}
+    $Action{action='buy'} me a
+    $Pizza{where=Pizza._where}
+    +$Food{food=Food._food}
+    $*
+    ?(?with*$Toppings{toppings+=Toppings._topping}{toppings+=','})
+    $*;
+
+Action = order | buy | purchase | get |fetch;
+Pizza=pizza ?pie{_where='ny'};
+Toppings=pepperoni{_topping='pepperoni'} |
+            (green chili){_topping='chili'};

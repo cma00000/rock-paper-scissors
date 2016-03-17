@@ -1,0 +1,122 @@
+{
+    "version": "0.5.0",
+    "framerate": 30,
+    "duration": 30,
+    "scale": 1,
+    "layers": [
+        {
+            "id": "0102bf7a61d4470baa0116d9c061df0b",
+            "name": "Eye",
+            "type": "Eye",
+            "visible": true,
+            "locked": false,
+            "keyframes": []
+        },
+        {
+            "id": "7e09c9abfd44402ba29eb12b8dfeedec",
+            "name": "Eye Texture",
+            "type": "Eye Texture",
+            "visible": true,
+            "locked": false,
+            "keyframes": [
+                {
+                    "value": {
+                        "Texture": "animations/textures/white-eye.png",
+                        "Color": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255
+                        }
+                    },
+                    "time": 0
+                },
+                {
+                    "value": {
+                        "Texture": "animations/textures/white-eye.png",
+                        "Color": {
+                            "r": 163,
+                            "g": 163,
+                            "b": 163
+                        }
+                    },
+                    "time": 20
+                },
+                {
+                    "value": {
+                        "Texture": "animations/textures/white-eye.png",
+                        "Color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0
+                        }
+                    },
+                    "time": 29
+                }
+            ]
+        },
+        {
+            "id": "bc98905ad4af4710885c255acffca156",
+            "name": "Body",
+            "type": "Body",
+            "visible": true,
+            "locked": false,
+            "keyframes": [
+                {
+                    "value": {
+                        "Head": -198.50000000000006,
+                        "Torso": -161,
+                        "Pelvis": -2.000000000000037,
+                        "Tween": {
+                            "display": "sine in out",
+                            "label": "Sine Ease In Out",
+                            "value": "sineInOut"
+                        }
+                    },
+                    "time": 5
+                },
+                {
+                    "value": {
+                        "Head": -198.50000000000006,
+                        "Torso": -161,
+                        "Pelvis": -2.000000000000037,
+                        "Tween": {
+                            "display": "sine in out",
+                            "label": "Sine Ease In Out",
+                            "value": "sineInOut"
+                        }
+                    },
+                    "time": 29
+                }
+            ]
+        },
+        {
+            "id": "072bfc4c44d941168f836f9a3ceacac6",
+            "name": "LED",
+            "type": "LED",
+            "visible": true,
+            "locked": false,
+            "keyframes": [
+                {
+                    "value": {
+                        "Color": {
+                            "r": 224,
+                            "g": 11,
+                            "b": 11
+                        }
+                    },
+                    "time": 0
+                },
+                {
+                    "value": {
+                        "Color": {
+                            "r": 8,
+                            "g": 0,
+                            "b": 0
+                        }
+                    },
+                    "time": 29
+                }
+            ]
+        }
+    ]
+}

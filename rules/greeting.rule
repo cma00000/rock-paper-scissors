@@ -1,0 +1,9 @@
+TopRule =
+$*
+    (
+        $greetings{whatNext='happy'} |
+        $sleeping{whatNext='sleep'}
+    )
+$*;
+greetings = (hello | hey | hi | (how are you) | (whats up));
+sleeping = (sleep | stop | (have a break) | rest | nap);

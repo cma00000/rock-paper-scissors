@@ -1,0 +1,93 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Sequence",
+        "name": "",
+        "options": {},
+        "children": [
+            "e73e32e8-7f6c-4337-bcf3-f4f8405c93c5",
+            "96230471-39bb-4e7d-850f-185740326959"
+        ],
+        "decorators": [
+            "05489e9b-7772-4717-bd8f-1f37299aaf1d"
+        ]
+    },
+    "meta": {
+        "version": 1
+    },
+    "e73e32e8-7f6c-4337-bcf3-f4f8405c93c5": {
+        "id": "e73e32e8-7f6c-4337-bcf3-f4f8405c93c5",
+        "class": "Listen",
+        "name": "wait for player",
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    let options = {",
+                "        heyJibo: false,",
+                "        detectEnd: true,",
+                "        incremental: true,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "rps.rule",
+            "onResult": [
+                "(listener) => {",
+                "        listener.on('cloud', (asrResult, speakerIds) => {",
+                "            console.log(asrResult);",
+                "            notepad.results = asrResult.NLParse",
+                "        });",
+                "",
+                "        listener.on('eos', (asrResult, speakerIds) => {",
+                "            console.log('EOS');",
+                "        });",
+                "    ",
+                "    ",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "96230471-39bb-4e7d-850f-185740326959": {
+        "id": "96230471-39bb-4e7d-850f-185740326959",
+        "class": "TextToSpeechJs",
+        "name": "",
+        "options": {
+            "getWords": [
+                "(callback) => {",
+                "  let results = notepad.results;",
+                "  let text = '';",
+                "  if (notepad.results) {",
+                "    text = results.rps;",
+                "    callback(text);",
+                "  }",
+                "}"
+            ],
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "05489e9b-7772-4717-bd8f-1f37299aaf1d": {
+        "id": "05489e9b-7772-4717-bd8f-1f37299aaf1d",
+        "class": "WhileCondition",
+        "name": "",
+        "options": {
+            "init": [
+                "() => {",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "    return true;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    }
+}

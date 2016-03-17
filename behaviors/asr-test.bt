@@ -1,0 +1,81 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Sequence",
+        "name": "",
+        "options": {},
+        "children": [
+            "efa80744-b8ad-424f-a150-31a00349d179",
+            "e620e7c7-d471-4808-a2ab-b533bb33dc12"
+        ]
+    },
+    "meta": {
+        "version": 1
+    },
+    "efa80744-b8ad-424f-a150-31a00349d179": {
+        "id": "efa80744-b8ad-424f-a150-31a00349d179",
+        "class": "Subtree",
+        "name": "",
+        "options": {
+            "behaviorPath": "null",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1,
+        "decorators": [
+            "0d684ba6-d90c-4034-941e-4d15c973b362"
+        ]
+    },
+    "e620e7c7-d471-4808-a2ab-b533bb33dc12": {
+        "id": "e620e7c7-d471-4808-a2ab-b533bb33dc12",
+        "class": "Listen",
+        "name": "",
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    let options = {",
+                "        heyJibo: false,",
+                "        detectEnd: true,",
+                "        incremental: false,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "null",
+            "onResult": [
+                "(listener) => {",
+                "    listener.on('cloud', function(asrResult, speakerIds) {",
+                "",
+                "    });",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "0d684ba6-d90c-4034-941e-4d15c973b362": {
+        "id": "0d684ba6-d90c-4034-941e-4d15c973b362",
+        "class": "SucceedOnEmbedded",
+        "name": "",
+        "options": {
+            "rule": "hey_jibo",
+            "onResult": [
+                "(listener) => {",
+                "\tlistener.on('hey-jibo', function(asrResult, speakerIds) {",
+                "",
+                "\t});",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    }
+}

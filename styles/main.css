@@ -1,0 +1,9 @@
+body {
+    margin: 0px;
+    overflow: hidden;
+}
+
+#eye {
+    width: 1280px;
+    height: 720px;
+}

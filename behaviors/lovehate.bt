@@ -1,0 +1,260 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "children": [
+            9,
+            12
+        ],
+        "decorators": [
+            11
+        ],
+        "options": {}
+    },
+    "3": {
+        "id": 3,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 9,
+        "children": [
+            4,
+            "feb2157e-b5ff-4dab-93e9-d5545a382f4f"
+        ],
+        "options": {}
+    },
+    "4": {
+        "id": 4,
+        "class": "Subtree",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 3,
+        "decorators": [
+            5
+        ],
+        "options": {
+            "behaviorPath": "idle.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        }
+    },
+    "5": {
+        "id": 5,
+        "class": "SucceedOnEvent",
+        "name": "",
+        "asset-pack": "core",
+        "options": {
+            "eventName": "listen",
+            "onEvent": [
+                "() => {",
+                "}"
+            ]
+        }
+    },
+    "9": {
+        "id": 9,
+        "class": "Parallel",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 1,
+        "children": [
+            3,
+            "a35f713b-ecca-4eb2-901d-048fa8df20f6"
+        ],
+        "options": {
+            "succeedOnOne": true
+        }
+    },
+    "10": {
+        "id": 10,
+        "class": "TextToSpeechJs",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 12,
+        "options": {
+            "getWords": [
+                "(callback) => {",
+                "    if(notepad.results) {",
+                "        let results = notepad.results;",
+                "        let text = '';",
+                "        if(!results.emotion) {",
+                "            if(results.emotion == \"love\") {",
+                "              text = 'I love you too';",
+                "            }",
+                "            else if(results.emotion == \"hate\") {",
+                "              text = 'Sorry to hear that';",
+                "            }",
+                "        }",
+                "        callback(text);",
+                "    }",
+                "    else {",
+                "        callback('Sorry didn\\'t understand that.');",
+                "    }",
+                "    ",
+                "}"
+            ],
+            "onWord": [
+                "(word) => {",
+                "}"
+            ]
+        }
+    },
+    "11": {
+        "id": 11,
+        "class": "WhileCondition",
+        "name": "",
+        "asset-pack": "core",
+        "options": {
+            "init": [
+                "() => {",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "    return true;",
+                "}"
+            ]
+        }
+    },
+    "12": {
+        "id": 12,
+        "class": "Sequence",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 1,
+        "children": [
+            10,
+            16
+        ],
+        "options": {}
+    },
+    "14": {
+        "id": 14,
+        "class": "PlayAnimation",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 16,
+        "decorators": [
+            15
+        ],
+        "options": {
+            "animPath": "love.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        }
+    },
+    "15": {
+        "id": 15,
+        "class": "Case",
+        "name": "",
+        "asset-pack": "core",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  return notepad.results && notepad.results.emotion == \"love\";",
+                "}"
+            ]
+        }
+    },
+    "16": {
+        "id": 16,
+        "class": "Switch",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 12,
+        "children": [
+            14,
+            17
+        ],
+        "options": {}
+    },
+    "17": {
+        "id": 17,
+        "class": "PlayAnimation",
+        "name": "",
+        "asset-pack": "core",
+        "parent": 16,
+        "decorators": [
+            18
+        ],
+        "options": {
+            "animPath": "hate.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        }
+    },
+    "18": {
+        "id": 18,
+        "class": "Case",
+        "name": "",
+        "asset-pack": "core",
+        "options": {
+            "conditional": [
+                "() => {",
+                "  return notepad.results && notepad.results.emotion == \"hate\";",
+                "}"
+            ]
+        }
+    },
+    "meta": {
+        "version": 1
+    },
+    "a35f713b-ecca-4eb2-901d-048fa8df20f6": {
+        "id": "a35f713b-ecca-4eb2-901d-048fa8df20f6",
+        "class": "Listen",
+        "name": "",
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    let options = {",
+                "        heyJibo: true,",
+                "        detectEnd: true,",
+                "        incremental: true,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "loveorhate.rule",
+            "onResult": [
+                "(listener) => {",
+                "    listener.on('hey-jibo', (asrResult, speakerIds) => {",
+                "        emitter.emit('listen')",
+                "    });",
+                "    listener.on('cloud', (asrResult, speakerIds) => {",
+                "        console.log(asrResult);",
+                "        notepad.results = asrResult.NLParse",
+                "    });",
+                "",
+                "    listener.on('eos', (asrResult, speakerIds) => {",
+                "        console.log('EOS');",
+                "    });",
+                "",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 9
+    },
+    "feb2157e-b5ff-4dab-93e9-d5545a382f4f": {
+        "id": "feb2157e-b5ff-4dab-93e9-d5545a382f4f",
+        "class": "Null",
+        "name": "",
+        "options": {},
+        "asset-pack": "core",
+        "parent": 3
+    }
+}

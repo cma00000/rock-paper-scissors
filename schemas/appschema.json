@@ -1,0 +1,13 @@
+{
+  "DebugBehavior": {
+    "type": "leaf",
+    "args": ["string"],
+    "meta": [
+      {
+        "field": "text",
+        "description": "text.",
+        "defaultValue": "null"
+      }
+    ]
+  }
+}

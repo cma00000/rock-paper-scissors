@@ -1,0 +1,72 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Sequence",
+        "name": "",
+        "options": {},
+        "children": [
+            "fa640b3f-63d3-4dde-af2e-7f8c07dca34a"
+        ],
+        "decorators": [
+            "361bd061-29cd-4a1b-a501-4f3a24addd52"
+        ]
+    },
+    "meta": {
+        "version": 1
+    },
+    "fa640b3f-63d3-4dde-af2e-7f8c07dca34a": {
+        "id": "fa640b3f-63d3-4dde-af2e-7f8c07dca34a",
+        "class": "Subtree",
+        "name": "",
+        "options": {
+            "behaviorPath": "idle.bt",
+            "getNotepad": [
+                "() => {",
+                "    return {};",
+                "}"
+            ],
+            "onResult": [
+                "(treeResult) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1,
+        "decorators": [
+            "72e35c24-5b9d-4ed4-8ccd-4c7c66d95956"
+        ]
+    },
+    "72e35c24-5b9d-4ed4-8ccd-4c7c66d95956": {
+        "id": "72e35c24-5b9d-4ed4-8ccd-4c7c66d95956",
+        "class": "SucceedOnEmbedded",
+        "name": "",
+        "options": {
+            "rule": "hey_jibo",
+            "onResult": [
+                "(listener) => {",
+                "\tlistener.on('hey-jibo', function(asrResult, speakerIds) {",
+                "",
+                "\t});",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    },
+    "361bd061-29cd-4a1b-a501-4f3a24addd52": {
+        "id": "361bd061-29cd-4a1b-a501-4f3a24addd52",
+        "class": "WhileCondition",
+        "name": "",
+        "options": {
+            "init": [
+                "() => {",
+                "}"
+            ],
+            "conditional": [
+                "() => {",
+                "    return true;",
+                "}"
+            ]
+        },
+        "asset-pack": "core"
+    }
+}

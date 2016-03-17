@@ -1,0 +1,4 @@
+TopRule = $* (
+        (play | go | do | show | give | sing) {action = 'play'} |
+        (stop | pause | shut | cut | off | mute | silence) {action = 'stop'}
+        );

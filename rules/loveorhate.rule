@@ -1,0 +1,6 @@
+TopRule=
+$*(
+    (love you){emotion='love'} |
+    (hate you){emotion='hate'}
+)$*
+;
