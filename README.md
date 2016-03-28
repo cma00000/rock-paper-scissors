@@ -1,3 +1,3 @@
 
 # rock-paper-scissors
-Sample Skill for jibo.
+A Simple Skill for jibo.
